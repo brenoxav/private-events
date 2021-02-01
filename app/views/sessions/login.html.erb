@@ -1,0 +1,14 @@
+<h1>Log in</h1>
+
+<%= form_with do |user| %>
+  <div class="field form-group mb-3">
+    <%= user.label :name, class: 'form-label' %>
+    <%= user.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= user.submit 'Login', class: 'btn btn-info' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', users_path, class: 'btn btn-outline-info my-3' %>
