@@ -2,7 +2,7 @@
 
 # Private Events
 
-> Create and manage events, invite people!
+> Create and manage events. Invite people!
 
 ![screenshot](./app/assets/images/screenshot-1.png)
 

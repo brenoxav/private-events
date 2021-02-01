@@ -1,0 +1,11 @@
+<div class="card">
+  <h3 class="card-header"><%= @user.name %></h3>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-outline-info my-3' %>
+<%= link_to 'Back', users_path, class: 'btn btn-outline-info my-3' %>
