@@ -1,0 +1,17 @@
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @event.creator.name %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-success mb-3' %>
+<%= link_to 'Back', events_path, class: 'btn btn-success mb-3' %>
