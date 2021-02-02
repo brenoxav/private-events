@@ -1,4 +1,4 @@
-<h1>Log in</h1>
+<h1 class="text-primary">Login</h1>
 
 <%= form_with do |user| %>
   <div class="field form-group mb-3">
@@ -7,8 +7,13 @@
   </div>
 
   <div class="actions">
-    <%= user.submit 'Login', class: 'btn btn-info' %>
+    <%= user.submit 'Log in', class: 'btn btn-primary' %>
   </div>
 <% end %>
+<br>
+<br>
+<h3 class="text-primary">Not registered, yet?</h3>
+<p class="text-primary">Sign up first.</p>
+<%= link_to "Sign Up", new_user_path, method: :get, class: 'btn btn-primary' %>
 
-<%= link_to 'Back', users_path, class: 'btn btn-outline-info my-3' %>
+<%= link_to 'Back', users_path, class: 'btn btn-outline-primary my-3' %>

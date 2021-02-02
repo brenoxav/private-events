@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">PRIVATE EVENTS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <%= link_to "Events", events_path, class: 'nav-link'%>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Users", users_path, class: 'nav-link'%>
+        </li>
+
+      </ul>
+      <span class="d-flex">
+        <% if logged_in? %>
+            <%= link_to current_user.name, user_path(current_user.id), class: 'nav-link fw-bold text-primary' %>
+            <%= link_to "Log out", logout_path, method: :post, class: 'btn btn-outline-dark'%>
+        <% else %>
+          <%= link_to "Join", welcome_path, class: 'btn btn-outline-dark'%>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</nav>
