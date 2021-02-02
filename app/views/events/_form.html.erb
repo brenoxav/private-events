@@ -12,18 +12,13 @@
   <% end %>
 
   <div class="field form-group mb-3">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.text_field :description, class: 'form-control', required: true %>
   </div>
 
   <div class="field form-group mb-3">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
-
-  <div class="field form-group mb-3 ">
-    <%#= form.label :creator_id %>
-    <%= form.number_field :creator_id, id: :creator_id, value: current_user.id, type: 'hidden', class: 'form-control' %>
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.datetime_select :date, type: 'datetime-local', class: 'form-control', required: true %>
   </div>
 
   <div class="actions">

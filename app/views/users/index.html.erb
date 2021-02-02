@@ -1,7 +1,7 @@
 <h1 class="text-primary" >Users</h1>
 
 <table class="table">
-  <thead>
+  <thead class="table-primary">
     <tr>
       <th scope="col">Name</th>
       <th scope="col" colspan="3"></th>
@@ -11,7 +11,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td scope="row"><%= user.name %></td>
+        <th scope="row"><%= user.name %></th>
         <td><%= link_to 'Show', user, class: 'link-dark' %></td>
         <td><%= link_to 'Edit', edit_user_path(user), class: 'link-dark' %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-dark' %></td>

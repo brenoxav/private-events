@@ -1,11 +1,39 @@
-<div class="card">
-  <h3 class="card-header"><%= @user.name %></h3>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+<h1 class="text-primary"><%= @user.name %></h1>
+<br>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">Created</li>
+      <% @user.events.each do |event| %>
+        <li class="d-flex justify-content-between list-group-item">
+          <span><%= event.description %></span>
+          <span>
+            <span class="badge bg-primary rounded-pill"><%= event.date.strftime("%^A %b %d, %Y") %></span>
+            <span class="badge bg-primary rounded-pill"><%= event.date.strftime("%H:%M") %></span>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">Attending</li>
+      <% @user.events.each do |event| %>
+        <li class="list-group-item">
+          <%= event.description %>
+          <span class="badge bg-primary rounded-pill"><%= event.date.strftime("%^A %b %d, %Y") %></span>
+        </li>
+      <% end %>
 
+      <li class="list-group-item">
+          Vacina da Cinzas
+          <span class="badge bg-primary rounded-pill">2021</span>
+      </li>
+      <li class="list-group-item">
+          Páscoa Pandêmica
+          <span class="badge bg-primary rounded-pill">2021</span>
+      </li>
+
+    </ul>
+</div>
+<br>
+<hr>
 <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-outline-primary my-3' %>
 <%= link_to 'Back', users_path, class: 'btn btn-outline-primary my-3' %>

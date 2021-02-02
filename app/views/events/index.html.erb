@@ -1,7 +1,7 @@
 <h1 class="text-success" >Events</h1>
 
 <table class="table">
-  <thead>
+  <thead class="table-success">
     <tr>
       <th scope="col">Description</th>
       <th scope="col">Date</th>
@@ -9,12 +9,11 @@
       <th  scope="col" colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <th scope="row"><%= event.description %></th scope="row">
-        <td><%= event.date %></td>
+        <th scope="row"><%= event.description %></th>
+        <td><%= event.date.strftime("%A %b %d, %Y \t\t %H:%M") %></td>
         <td><%= event.creator.name %></td>
         <td><%= link_to 'Show', event, class: 'link-dark' %></td>
         <td><%= link_to 'Edit', edit_event_path(event), class: 'link-dark' %></td>
@@ -23,7 +22,5 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Event', new_event_path, class: 'btn btn-success mb-3' %>

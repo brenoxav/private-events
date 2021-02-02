@@ -3,7 +3,7 @@
 <%= form_with do |user| %>
   <div class="field form-group mb-3">
     <%= user.label :name, class: 'form-label' %>
-    <%= user.text_field :name, class: 'form-control' %>
+    <%= user.text_field :name, class: 'form-control', required: true %>
   </div>
 
   <div class="actions">
