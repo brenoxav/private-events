@@ -6,53 +6,49 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  # GET /events/1 or /events/1.json
+  # GET /events/1
   def show
+    @event_attendance = EventAttendance.new # Allow atendee (User) to attend from the Event's show page
   end
 
   # GET /events/new
   def new
-    @event = current_user.events.build
+    @event = Event.new
   end
 
   # GET /events/1/edit
   def edit
   end
 
-  # POST /events or /events.json
+  # POST /events
   def create
-    @event = current_user.events.build(event_params)
+    @event = current_user.created_events.build(event_params)
 
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Event was successfully created." }
-        format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
+  # PATCH/PUT /events/1
   def update
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: "Event was successfully updated." }
-        format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /events/1 or /events/1.json
+  # DELETE /events/1
   def destroy
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

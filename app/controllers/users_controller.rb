@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users = User.all.order(:name)
   end
 
   # GET /users/1
@@ -46,6 +46,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    reset_session if @user == current_user
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }

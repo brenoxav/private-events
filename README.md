@@ -2,17 +2,20 @@
 
 # Private Events
 
-> Create and manage events. Invite people!
+> Create and manage events. Invite people.
 
 ![screenshot](./app/assets/images/screenshot-1.png)
+![screenshot](./app/assets/images/screenshot-2.png)
+![screenshot](./app/assets/images/screenshot-3.png)
 
-This rails app implemments Active Record Associations between parties, creators and attendees.
+This rails app implemments Active Record Associations between events, event creators and event attendees.
 
 ## Built With
 
 - Ruby 3.0.0
 - Ruby on Rails 6.1.1
 - Devise
+- Bootstrap 5
 
 ## Getting Started
 

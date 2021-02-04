@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post 'logout',  to: 'sessions#destroy'
   get 'welcome',  to: 'sessions#welcome'
 
+  post 'confirm_attendance',    to: 'event_attendances#create'
+  delete 'cancel_attendance', to: 'event_attendances#destroy'
+
   root 'sessions#welcome'
   
 end
