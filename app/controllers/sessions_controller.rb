@@ -1,15 +1,13 @@
 class SessionsController < ApplicationController
-
   # GET /welcome
-  def welcome
-  end
+  def welcome; end
 
   # GET /login
   def new
     render :login
   end
 
-  #POST /login
+  # POST /login
   def create
     user = User.find_by(name: params[:name])
 
@@ -26,5 +24,4 @@ class SessionsController < ApplicationController
     reset_session
     redirect_to welcome_url
   end
-
 end
