@@ -34,4 +34,4 @@
   </tbody>
 </table>
 <br>
-<%= link_to 'New Event', new_event_path, class: 'btn btn-success mb-3' %>
+<%= link_to 'New Event', new_event_path, class: 'btn btn-success mb-3' if current_user %>

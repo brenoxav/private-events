@@ -23,11 +23,11 @@
   </div>
 
   <div class="field form-group visually-hidden">
-    <%= form.number_field :attendee_id, value: current_user.id, class: 'form-control' %>
+    <%= form.number_field :attendee_id, value: current_user.id, class: 'form-control' if current_user %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Attend this Event',class: 'btn btn-success'%>
+    <%= form.submit 'Attend this Event',class: 'btn btn-success' if current_user %>
   </div>
 
 <% end %>
@@ -40,7 +40,7 @@
 
   <%= form_with(model: @event_attendance, url: "/cancel_attendance", method: :delete) do |form| %>
     <%= form.number_field :attended_event_id, value: @event.id, class: 'form-control visually-hidden'%>
-    <%= form.number_field :attendee_id, value: current_user.id, class: 'form-control visually-hidden' %>
+    <%= form.number_field :attendee_id, value: current_user.id, class: 'form-control visually-hidden' if current_user %>
 
     <% @event.attendees.each do |attendee| %>
       <li class="list-group-item d-flex justify-content-between">

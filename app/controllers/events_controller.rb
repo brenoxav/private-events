@@ -21,6 +21,10 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
+    unless current_user
+      redirect_to login_path, notice: 'You need to be logged in to create an event.'
+      return
+    end
     @event = current_user.created_events.build(event_params)
 
     respond_to do |format|
