@@ -1,0 +1,21 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 class="display-1 text-primary">Welcome <span class="fw-bold"><%= current_user.name if logged_in? %></span></h1>
+<% if logged_in? %>
+  <br>
+  <br>
+  <%= link_to "View Events", events_path, method: :get, class: 'btn btn-success my-3'%>
+<% else %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <%= link_to "Log in", login_path, method: :get, class: 'btn btn-outline-primary' %>
+    <%= link_to "Sign Up", new_user_path, method: :get, class: 'btn btn-primary' %>
+  </div>
+<% end %>

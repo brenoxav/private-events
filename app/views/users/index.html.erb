@@ -1,0 +1,15 @@
+<h1 class="text-white bg-primary p-2" >Users</h1>
+
+<table class="table">
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <th scope="row"><%= link_to user.name, user, class: 'fs-4 link-primary text-decoration-none' %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>

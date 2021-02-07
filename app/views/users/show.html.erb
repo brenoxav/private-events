@@ -1,0 +1,49 @@
+<h1 class="text-primary"><%= @user.name %></h1>
+<br>
+<div class="row row-cols-1 row-cols-lg-3 g-4">
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">Created</li>
+      <% @user.created_events.each do |event| %>
+        <li class="d-flex justify-content-between list-group-item">
+          <span><%= event.description %></span>
+          <span>
+            <span class="badge bg-primary rounded-pill"><%= event.date.strftime("%^A %b %d, %Y") %></span>
+            <span class="badge bg-primary rounded-pill"><%= event.date.strftime("%H:%M") %></span>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">Upcoming events</li>
+      <% @user.attended_events.each do |event| %>
+        <% if event.date >= Time.current %>
+          <li class="d-flex justify-content-between list-group-item">
+            <span><%= event.description %></span>
+            <span>
+              <span class="badge bg-primary rounded-pill"><%= event.date.strftime("%^A %b %d, %Y") %></span>
+              <span class="badge bg-primary rounded-pill"><%= event.date.strftime("%H:%M") %></span>
+            </span>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-dark" aria-current="true">Previously attended events</li>
+      <% @user.attended_events.each do |event| %>
+        <% if event.date < Time.current %>
+          <li class="d-flex justify-content-between list-group-item">
+            <span><%= event.description %></span>
+            <span>
+              <span class="badge bg-secondary rounded-pill"><%= event.date.strftime("%^A %b %d, %Y") %></span>
+              <span class="badge bg-secondary rounded-pill"><%= event.date.strftime("%H:%M") %></span>
+            </span>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+</div>
+<br>
+<hr>
+<%= link_to 'Back', users_path, class: 'btn btn-outline-primary my-3' %>
+<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-outline-primary my-3'if current_user == @user %>
+<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger my-3' if current_user == @user %></td>

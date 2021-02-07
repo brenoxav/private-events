@@ -1,0 +1,11 @@
+<h1 class="text-primary" >Sign up</h1>
+
+<%= render 'form', user: @user %>
+<br>
+<hr>
+<br>
+<h3 class="text-primary">Already registered?</h3>
+<p class="text-primary">Log in, instead.</p>
+<%= link_to "Log in", login_path, method: :get, class: 'btn btn-outline-primary' %>
+
+<%= link_to 'Back', users_path, class: 'btn btn-outline-primary my-3' %>

@@ -1,0 +1,57 @@
+<h1 class="text-success"><%= @event.description %></h1>
+<br>
+<p class="text-success h6">When: <span class="fw-bold"><%= @event.date.strftime("%^A %b %d, %Y") %></span></p>
+<p class="text-success h6">Creator: <span class="fw-bold"><%= @event.creator.name %></span></p>
+<br>
+
+<!-- ATTENDANCE FORM BEGIN -->
+<%= form_with(model: @event_attendance, url: "/confirm_attendance", method: :post) do |form| %>
+  <% if @event_attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event_attendance.errors.count, "error") %> prohibited this event attendance from being saved:</h2>
+
+      <ul>
+        <% @event_attendance.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group visually-hidden">
+    <%= form.number_field :attended_event_id, value: @event.id, class: 'form-control'%>
+  </div>
+
+  <div class="field form-group visually-hidden">
+    <%= form.number_field :attendee_id, value: current_user.id, class: 'form-control' if current_user %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Attend this Event',class: 'btn btn-success' if current_user %>
+  </div>
+
+<% end %>
+<!-- ATTENDANCE FORM END -->
+
+<br>
+<br>
+<ul class="list-group">
+  <li class="list-group-item active" aria-current="true">Attendees</li>
+
+  <%= form_with(model: @event_attendance, url: "/cancel_attendance", method: :delete) do |form| %>
+    <%= form.number_field :attended_event_id, value: @event.id, class: 'form-control visually-hidden'%>
+    <%= form.number_field :attendee_id, value: current_user.id, class: 'form-control visually-hidden' if current_user %>
+
+    <% @event.attendees.each do |attendee| %>
+      <li class="list-group-item d-flex justify-content-between">
+        <span><%= attendee.name %></span>
+        <span><%= form.submit 'Cancel Attendance', class: 'btn btn-sm btn-outline-danger' if current_user == attendee%></span>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<br>
+<hr>
+<%= link_to 'Back', events_path, class: 'btn btn-outline-success mb-3' %>
+<%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-outline-success mb-3' if current_user == @event.creator %>
+<%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mb-3' if current_user == @event.creator %></td>

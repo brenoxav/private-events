@@ -1,0 +1,30 @@
+<%= form_with(model: event_attendance) do |form| %>
+  <% if event_attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event_attendance.errors.count, "error") %> prohibited this event attendance from being saved:</h2>
+
+      <ul>
+        <% event_attendance.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%#= form.label :description, class: 'form-label' %>
+    <%= form.number_field :attended_event_id, value: @event.id, class: 'form-control'%>
+  </div>
+
+  <div class="field form-group">
+    <%#= form.label :date, class: 'form-label' %>
+    <%= form.number_field :attendee_id, value: current_user.id, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Attend this Event',class: 'btn btn-lg btn-success'%>
+  </div>
+
+<% end %>
+
+<%#= link_to 'Attend this Event', edit_event_path(@event), class: 'btn btn-lg btn-success' %>
